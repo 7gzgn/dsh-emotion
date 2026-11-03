@@ -1,0 +1,71 @@
+{
+  "name": "dsh-emotion",
+  "version": "0.2.0",
+  "description": "把 AI 的情绪搬到模型外面：若干条情绪轴各 0-100，按你说的话加减、随时间自己漂移，每轮把「现在处在哪一档 + 可用标签」注入系统提示。数值只由插件维护，模型自己算不出来也改不了——它只能带着这个状态说话。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "assets",
+    "cordis.patch.yml",
+    "default-emotions.json",
+    "README.md"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "emotion",
+    "mood",
+    "affect",
+    "state-machine",
+    "persona",
+    "system-prompt"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/7gzgn/dsh-emotion.git"
+  },
+  "dsh": {
+    "compatibility": {
+      "dsh": "0.2.1-rc.2",
+      "dshReleases": {
+        "0.2.0-rc.2": "compatible",
+        "0.2.1-rc.2": "compatible"
+      },
+      "profiles": [
+        "web"
+      ]
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.4 <5.0.0",
+    "@deepseek-ai/dsh-system-prompt": ">=0.2.0-rc.2 <0.3.0-0"
+  },
+  "homepage": "https://github.com/7gzgn/dsh-emotion#readme",
+  "bugs": {
+    "url": "https://github.com/7gzgn/dsh-emotion/issues"
+  }
+}
