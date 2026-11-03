@@ -1,0 +1,4 @@
+# dsh-emotion bundle patch
+- insert:
+    - id: plugin-emotion
+      name: dsh-emotion
